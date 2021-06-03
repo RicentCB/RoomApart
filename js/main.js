@@ -1,8 +1,37 @@
 const modalAddEvent = document.querySelector(".modal#modal-addEvent");
-// TODO: Generar lista de colores con json
+
+//Inyectar colores en el HTML del formulario
+const OptionsColors = [
+  {"color": "#023e8a","name": "Azul Obscuro"},
+  {"color": "#00b4d8","name": "Azul"},
+  {"color": "#0ead69","name": "Verde"},
+  {"color": "#fca311","name": "Amarillo"},
+  {"color": "#d00000","name": "Rojo"},
+];
+modalAddEvent.querySelector("#input-color").innerHTML = 
+  OptionsColors.reduce((html, color) => {
+    return html +
+    `<a href="#" class="row-content option-color" color="${color["color"]}">
+        <div class="color-content" style="background-color: ${color["color"]}"></div>
+      <p>${color["name"]}</p>
+    </a>
+    `;
+    }
+  ,'')
 
 // Una vez cargado todo el documento
 document.addEventListener('DOMContentLoaded', function () {
+  // Objeto para el envio de datos
+  let addEventParams = {
+    "title": '',
+    "room": '',
+    "color": '',
+    "subject": '',
+    "date": '',
+    "timeStart": '',
+    "timeEnd": ''
+  }
+
   // Construir Calendario
   const calendarEl = document.getElementById('calendar');
   const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -17,9 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   calendar.render();
 
-  /*----------------------- Modal para agregar evento -----------------------*/
-
-  // Abrir modal de 
+  /*----------------- Modal para agregar evento -----------------*/
+  // Abrir modal para Agregar Evento
   document.querySelector("nav a#open-modal-event").addEventListener('click', e=>{
     modalAddEvent.classList.add('visible')
     modalAddEvent.querySelector(".modal-content").classList.add('visible');
@@ -36,16 +64,36 @@ document.addEventListener('DOMContentLoaded', function () {
     modalAddEvent.classList.remove('visible');
     modalAddEvent.querySelector(".modal-content").classList.remove('visible');
   })
-  
-  // Solicitud a php
+
+  // Seleccionar Color
+  modalAddEvent.querySelectorAll("a.option-color").forEach(domElement=>{
+    domElement.addEventListener("click", e=>{
+      e.preventDefault();
+      //Remover otros colores
+      modalAddEvent.querySelectorAll("a.option-color").forEach(child=>{
+        child.classList.remove('selected');
+      });
+      //Agregar color Seleccionado
+      let thisColor = e.target;
+      if(! thisColor.classList.contains('row-content')){
+        thisColor = thisColor.parentNode;
+      }
+      thisColor.classList.add('selected');
+      //Modicar datos a enviar
+      addEventParams["color"] = thisColor.getAttribute("color");
+    })
+  })
+
+  // Boton de Enviar Datos en modal presionado
   modalAddEvent.querySelector("a.btn.submit").addEventListener("click", e=>{
     e.preventDefault();
     let data = new FormData();
     data.append("var1", "val1");
     data.append("var2", "val2");
-    PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
-      console.log(ans);
-    })
+    console.log(addEventParams);
+    // PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
+    //   console.log(ans);
+    // })
   });
 });
 
