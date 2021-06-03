@@ -1,5 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
+const modalAddEvent = document.querySelector(".modal#modal-addEvent");
+// TODO: Generar lista de colores con json
 
+// Una vez cargado todo el documento
+document.addEventListener('DOMContentLoaded', function () {
   // Construir Calendario
   const calendarEl = document.getElementById('calendar');
   const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -15,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
   calendar.render();
 
   /*----------------------- Modal para agregar evento -----------------------*/
-  const modalAddEvent = document.querySelector(".modal#modal-addEvent");
 
   // Abrir modal de 
   document.querySelector("nav a#open-modal-event").addEventListener('click', e=>{
@@ -34,8 +36,32 @@ document.addEventListener('DOMContentLoaded', function () {
     modalAddEvent.classList.remove('visible');
     modalAddEvent.querySelector(".modal-content").classList.remove('visible');
   })
-
+  
+  // Solicitud a php
+  modalAddEvent.querySelector("a.btn.submit").addEventListener("click", e=>{
+    e.preventDefault();
+    let data = new FormData();
+    data.append("var1", "val1");
+    data.append("var2", "val2");
+    PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
+      console.log(ans);
+    })
+  });
 });
+
+// Metodo Post para enviar datos usando url y formData
+const PostRequest = async (data = {}, url = '')=>(
+  await fetch(url ,{
+    method: "POST",
+    body: data,
+  }).then(response=>{
+    if(response.ok){
+      return response.text();
+    }else{
+      return {"error": response.statusText};
+    }
+  })
+);
 
 const eventsEx = [
   {
