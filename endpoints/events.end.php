@@ -1,13 +1,13 @@
 <?php
-    require_once("../controller/events.controller.php");
-    require_once("../model/events.model.php");
+    require_once("../controller/generic.controller.php");
+    require_once("../model/generic.model.php");
 
     if(isset($_POST["action"])){
         switch($_POST["action"]){
             case 'createEvent':
                 $_POST["timeStart"] = $_POST["timeStart"].':00';
                 $_POST["timeEnd"] = $_POST["timeEnd"].':00';
-                $newEvent = EventsController::ctrCreateEvent($_POST);
+                $newEvent = GenericController::ctrCreateEvent($_POST);
                 if($newEvent)
                     echo json_encode(array("type"=>"success"));
                 else

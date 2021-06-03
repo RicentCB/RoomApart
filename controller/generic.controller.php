@@ -1,14 +1,13 @@
 <?php
-    class EventsController{
+    class GenericController{
         // Leer eventos
         static public function ctrReadEvents($item=NULL, $value=NULL){
-            $events = EventModel::mldReadEvents($item, $value);
+            $events = GenericModel::mldReadTable($item, $value, "eventos");
             return $events;
         }
         //Crear Eventos
         static public function ctrCreateEvent($data){
-            
-            $newEvent = EventModel::mdlCreateEvent($data);
+            $newEvent = GenericModel::mdlCreateEvent($data);
             return $newEvent;
         }
     }

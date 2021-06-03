@@ -1,10 +1,10 @@
 <?php  
     require_once("connection.php");
 
-    class EventModel{
+    class GenericModel{
         // Leer Eventos
-        static public function mldReadEvents($item, $value){
-            $sql = "SELECT * FROM eventos ";
+        static public function mldReadTable($item, $value, $tablename){
+            $sql = "SELECT * FROM $tablename ";
             if($item == null){
                 $stmt = Connection::connect() -> prepare($sql);
                 $stmt -> execute();
@@ -17,6 +17,7 @@
                 return $stmt -> fetch();
             }
         }
+
         // Crear Nuevo Evento
         static public function mdlCreateEvent($data){
             $sql = "INSERT INTO `eventos` (`id_room`, `titulo`, `color`, `materia`, `fecha`, `hora_inicio`, `hora_fin`) ";

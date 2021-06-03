@@ -1,9 +1,9 @@
 <?php
-    require_once("../controller/events.controller.php");
-    require_once("../model/events.model.php");
+    require_once("../controller/generic.controller.php");
+    require_once("../model/generic.model.php");
 
     // Obtener Todos los eventos
-    $allEvents = EventsController::ctrReadEvents();
+    $allEvents = GenericController::ctrReadEvents();
     $arrOutEvents = array();
     foreach ($allEvents as $event) {
         array_push($arrOutEvents, array(
