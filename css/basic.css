@@ -243,6 +243,9 @@ a.btn{
 .alert.active{
     display: block;
 }
+.alert.active.success{
+    background-color: rgba(4, 175, 75, 0.75);
+}
 
 /* Boton de Inicio*/
 

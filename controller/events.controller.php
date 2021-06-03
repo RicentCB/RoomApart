@@ -1,7 +1,14 @@
 <?php
     class EventsController{
+        // Leer eventos
         static public function ctrReadEvents($item=NULL, $value=NULL){
-            $clients = EventModel::mldReadEvents($item, $value);
-            return $clients;
+            $events = EventModel::mldReadEvents($item, $value);
+            return $events;
+        }
+        //Crear Eventos
+        static public function ctrCreateEvent($data){
+            
+            $newEvent = EventModel::mdlCreateEvent($data);
+            return $newEvent;
         }
     }

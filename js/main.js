@@ -23,9 +23,9 @@ modalAddEvent.querySelector("#input-color").innerHTML =
 /*----------------- Cargado el documento -----------------*/
 document.addEventListener('DOMContentLoaded', function () {
 
-  PostRequest({}, 'data/events.data.php').then((ans)=>{
-    console.log(JSON.parse(ans));
-  })
+  // PostRequest({}, 'data/events.data.php').then((ans)=>{
+  //   console.log(JSON.parse(ans));
+  // })
   // Objeto para el envio de datos
   let addEventParams = {
     "title": '',
@@ -127,12 +127,19 @@ document.addEventListener('DOMContentLoaded', function () {
     if(formIsValid()){
       //Crear objeto de datos para enviar
       let data = new FormData();
+      data.append("action", "createEvent");
       Object.keys(addEventParams).forEach(key=>{
         data.append(key, addEventParams[key]);
       });
       //Solicitud POST
-      PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
-        console.log(ans);
+      PostRequest(data, "endpoints/events.end.php").then(ans=>{
+        if(ans){
+          infoModal.innerHTML = 'Evento agregado correctamente';
+          infoModal.classList.add('active', 'success');
+          setTimeout(()=>{
+            window.location.reload();
+          }, 1000);
+        }
       })
     };
   });

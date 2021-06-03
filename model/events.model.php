@@ -19,17 +19,18 @@
         }
         // Crear Nuevo Evento
         static public function mdlCreateEvent($data){
-            $sql = "INSERT INTO `eventos` (`id_evento`, `id_room`, `titulo`, `color`, `materia`, `fecha`, `hora_inicio`, `hora_fin`) ";
-            $sql = "VALUES (NULL, :id_room, :titulo, :color, :materia, :fecha, :hora_inicio, :hora_fin)";
+            $sql = "INSERT INTO `eventos` (`id_room`, `titulo`, `color`, `materia`, `fecha`, `hora_inicio`, `hora_fin`) ";
+            $sql .= "VALUES (:id_room, :titulo, :color, :materia, :fecha, :hora_inicio, :hora_fin) ";
             
             $stmt = Connection::connect()->prepare($sql);
-            $stmt -> bindParam(":id_room", $data["room"]);
+
             $stmt -> bindParam(":titulo", $data["title"]);
+            $stmt -> bindParam(":id_room", $data["room"]);
             $stmt -> bindParam(":color", $data["color"]);
             $stmt -> bindParam(":materia", $data["subject"]);
-            $stmt -> bindParam(":timeStart", $data["hora_inicio"]);
+            $stmt -> bindParam(":fecha", $data["date"]);
+            $stmt -> bindParam(":hora_inicio", $data["timeStart"]);
             $stmt -> bindParam(":hora_fin", $data["timeEnd"]);
-            
 
             if($stmt->execute())
                 return true;
