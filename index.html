@@ -19,7 +19,7 @@
 <body>
     <nav>
         <h1>ROOM APART</h1>
-        <a href="#" class="btn" id="add-event">
+        <a href="#" class="btn" id="open-modal-event">
             Registrar Nuevo Evento
         </a>
     </nav>
@@ -27,8 +27,8 @@
         <div id="calendar"></div>
     </main>
 
-    <section class="modal" id="modal-addEvent">
-        <div class="modal-content">
+    <section class="modal visible" id="modal-addEvent">
+        <div class="modal-content rotation-3d visible">
             <a href="#" class="close-modal"> </a>
             <h2>Agregar Evento</h2>
             <form action="#" class="form-container">
@@ -77,7 +77,6 @@
                     </div>
                 </div>
                 <div class="row-container">
-
                     <div class="input-container row-content">
                         <label for="in-date">Dia</label>
                         <input type="date" name="in-date" id="in-date" placeholder="E.g Presentación final">
@@ -90,6 +89,10 @@
                         <label for="in-timeEnd">Hora Termino</label>
                         <input type="time" name="in-timeEnd" id="in-timeEnd" placeholder="E.g Presentación final">
                     </div>
+                </div>
+                <div class="buttons-sides-container">
+                    <a href="#" class="btn btn-cancel cancel">Cancelar</a>
+                    <a href="#" class="btn btn-primary submit">Aceptar</a>
                 </div>
             </form>
         </div>

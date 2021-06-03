@@ -14,12 +14,25 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   calendar.render();
 
-  // Modal para agregar evento
-  const modalAddEvent = document.querySelector(".modal#modal-addEvent")
-  
+  /*----------------------- Modal para agregar evento -----------------------*/
+  const modalAddEvent = document.querySelector(".modal#modal-addEvent");
+
+  // Abrir modal de 
+  document.querySelector("nav a#open-modal-event").addEventListener('click', e=>{
+    modalAddEvent.classList.add('visible')
+    modalAddEvent.querySelector(".modal-content").classList.add('visible');
+  });
+
+  // Boton Cerrar modal
   modalAddEvent.querySelector("a.close-modal").addEventListener('click', e=>{
     e.preventDefault();
-    console.log("Cerrar");
+    modalAddEvent.classList.remove('visible');
+    modalAddEvent.querySelector(".modal-content").classList.remove('visible');
+  })
+  modalAddEvent.querySelector("a.btn-cancel").addEventListener('click', e=>{
+    e.preventDefault();
+    modalAddEvent.classList.remove('visible');
+    modalAddEvent.querySelector(".modal-content").classList.remove('visible');
   })
 
 });

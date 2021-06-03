@@ -16,17 +16,22 @@ nav h1{
 nav > a.btn{
     position: absolute;
     top: calc(50% - 18px);
-    /* margin-top: -10px; */
     right: 8%;
     background-color: rgb(255, 255, 255);
-    padding: 10px 20px;
-    border-radius: 5px;
     color: rgb(31, 31, 31);
-    font-weight: 600;
+    
 }
 main{
     margin-top: 90px;
     padding-top: 25px;
+}
+
+a.btn.btn-primary{
+    background-color: #8F0000;
+    color: #fff;
+}
+a.btn.btn-primary:hover{
+    background-color: #db3636;
 }
 /* Estilos del calendario */
 .fc-header-toolbar .fc-button-primary,
@@ -50,7 +55,6 @@ main{
 .fc .fc-daygrid-day.fc-day-today{
     background-color: #ff0095;
     background-color: rgba(255, 214, 214, 0.25);
-
 }
 
 /* Modal de Agregar Evento */
@@ -91,4 +95,11 @@ main{
     height: 25px;
     background-color: cadetblue;
     margin: 0 auto 15px auto;
+}
+.buttons-sides-container{
+    margin-top: 50px;
+}
+.buttons-sides-container a.btn-cancel{
+    border: 2px solid rgb(90, 90, 90);
+
 }

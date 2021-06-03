@@ -41,12 +41,13 @@ table {
     border: none;
 }
 
-button.btn {
+button {
     appearance: none;
-    background-color: #fff;
-    color: blue;
-    color: #000;
     border: none;
+}
+
+select{
+    cursor: pointer;
 }
 
 button:focus, select:focus, input:focus,
@@ -80,19 +81,10 @@ p.rich span {
     justify-content: center;
     align-items: center;
 }
-
-.col {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.col-6 {
-    flex: 1;
-}
-
-.col-9 {
-    flex: 2;
+.buttons-sides-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /*----------------------------------------------------
@@ -127,6 +119,12 @@ main{
     z-index: 1;
 }
 
+a.btn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
 .modal{
     background-color: rgba(32, 32, 32, 0.6);
     width: 100vw;
@@ -137,6 +135,13 @@ main{
     backdrop-filter: blur(5px);
     padding: 100px 25%;
     box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    visibility: hidden;
+}
+.modal.visible{
+    opacity: 1;
+    visibility: visible;
 }
 @media only screen and (min-width: 1117px){
     .modal{
@@ -152,6 +157,31 @@ main{
     padding: 40px 80px;
     position: relative;
 }
+.rotation-3d{
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    visibility: hidden;
+}
+.rotation-3d.visible{
+    opacity: 1;
+    visibility: visible;
+    animation: cd-3d-rotation 0.5s 0.3s;
+    transform-origin: center top;
+    /* Force Hardware Acceleration */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    animation-fill-mode: backwards;
+}
+@keyframes cd-3d-rotation {
+    0% {
+      transform: perspective(1000px) rotateX(-90deg);
+    }
+    100% {
+      transform: perspective(1000px) translateY(0);
+    }
+}
+
 .modal .modal-content a.close-modal{
     width: 40px;
     height: 40px;
@@ -182,6 +212,7 @@ main{
 .form-container{
     margin-top: 25px;
 }
+
 .input-container{
     width: 100%;
     display: flex;
