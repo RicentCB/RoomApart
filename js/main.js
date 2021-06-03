@@ -120,15 +120,16 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     //Validaciones
     if(formIsValid()){
-      console.log("valido")
-    }
-    let data = new FormData();
-    data.append("var1", "val1");
-    data.append("var2", "val2");
-    console.log(addEventParams);
-    // PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
-    //   console.log(ans);
-    // })
+      //Crear objeto de datos para enviar
+      let data = new FormData();
+      Object.keys(addEventParams).forEach(key=>{
+        data.append(key, addEventParams[key]);
+      });
+      //Solicitud POST
+      PostRequest(data, "controller/events.ccontroller.php").then(ans=>{
+        console.log(ans);
+      })
+    };
   });
 
     //Funcion para validar datos de formularip
