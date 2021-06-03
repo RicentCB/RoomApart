@@ -10,4 +10,9 @@
             $newEvent = GenericModel::mdlCreateEvent($data);
             return $newEvent;
         }
+        // Leer salones
+        static public function ctrReadRooms($item=NULL, $value=NULL){
+            $rooms = GenericModel::mldReadTable($item, $value, "salones");
+            return $rooms;
+        }
     }

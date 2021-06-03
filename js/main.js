@@ -9,23 +9,30 @@ const OptionsColors = [
   {"color": "#d00000","name": "Rojo"},
 ];
 modalAddEvent.querySelector("#input-color").innerHTML = 
-  OptionsColors.reduce((html, color) => {
-    return html +
-    `<a href="#" class="row-content option-color" color="${color["color"]}">
+  OptionsColors.reduce((html, color) => ( 
+    `${html}
+    <a href="#" class="row-content option-color" color="${color["color"]}">
         <div class="color-content" style="background-color: ${color["color"]}"></div>
       <p>${color["name"]}</p>
     </a>
-    `;
-    }
-  ,'')
+    `),'');
+
 
 
 /*----------------- Cargado el documento -----------------*/
 document.addEventListener('DOMContentLoaded', function () {
-
-  // PostRequest({}, 'data/events.data.php').then((ans)=>{
-  //   console.log(JSON.parse(ans));
-  // })
+  //Inyectar opciones de salon
+  PostRequest({}, 'data/rooms.data.php').then((ans)=>{
+    const jsonAns = JSON.parse(ans);
+    modalAddEvent.querySelector('select#in-room').innerHTML = 
+      jsonAns.reduce((html, option)=> (
+        `${html}
+        <option value="${option["id_room"]}">${option["nombre"]}</option>
+        `),
+        '<option value="0">Seleccione un salon</option>')
+    });
+      
+  
   // Objeto para el envio de datos
   let addEventParams = {
     "title": '',
