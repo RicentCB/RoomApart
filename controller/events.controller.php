@@ -1,4 +1,7 @@
 <?php
-    echo "co\n";
-    echo "<br>\n";
-    var_dump($_POST);
+    class EventsController{
+        static public function ctrReadEvents($item=NULL, $value=NULL){
+            $clients = EventModel::mldReadEvents($item, $value);
+            return $clients;
+        }
+    }

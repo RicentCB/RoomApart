@@ -19,8 +19,13 @@ modalAddEvent.querySelector("#input-color").innerHTML =
     }
   ,'')
 
-// Una vez cargado todo el documento
+
+/*----------------- Cargado el documento -----------------*/
 document.addEventListener('DOMContentLoaded', function () {
+
+  PostRequest({}, 'data/events.data.php').then((ans)=>{
+    console.log(JSON.parse(ans));
+  })
   // Objeto para el envio de datos
   let addEventParams = {
     "title": '',
@@ -42,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
-    events: eventsEx,
+    eventSources: ['data/events.data.php']
   });
   calendar.render();
 
@@ -210,62 +215,3 @@ const PostRequest = async (data = {}, url = '')=>(
     }
   })
 );
-
-const eventsEx = [
-  {
-    title: 'All Day Event',
-    start: '2021-06-01',
-    backgroundColor: "#ccc",
-    borderColor: "#ff0095",
-  },
-  {
-    title: 'Long Event',
-    start: '2021-06-07',
-    end: '2021-06-10'
-  },
-  {
-    groupId: 999,
-    title: 'Repeating Event',
-    start: '2021-06-09T16:00:00'
-  },
-  {
-    groupId: 999,
-    title: 'Repeating Event',
-    start: '2021-06-16T16:00:00'
-  },
-  {
-    title: 'Conference',
-    start: '2021-06-11',
-    end: '2021-06-13'
-  },
-  {
-    title: 'Meeting',
-    start: '2021-06-12T10:30:00',
-    end: '2021-06-12T12:30:00'
-  },
-  {
-    title: 'Lunch',
-    start: '2021-06-12T12:00:00'
-  },
-  {
-    title: 'Meeting',
-    start: '2021-06-12T14:30:00'
-  },
-  {
-    title: 'Happy Hour',
-    start: '2021-06-12T17:30:00'
-  },
-  {
-    title: 'Dinner',
-    start: '2021-06-12T20:00:00'
-  },
-  {
-    title: 'Birthday Party',
-    start: '2021-06-13T07:00:00'
-  },
-  {
-    title: 'Click for Google',
-    url: 'http://google.com/',
-    start: '2021-06-28'
-  }
-]
