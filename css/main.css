@@ -29,4 +29,23 @@ main{
     padding-top: 25px;
 }
 /* Estilos del calendario */
+.fc-header-toolbar .fc-button-primary,
+.fc-header-toolbar .fc-button-primary:not(:disabled):active
+{
+    background-color: #8F0000;
+    border-color: #8F0000;
+}
+.fc-header-toolbar .fc-button-primary:not(:disabled).fc-button-active{
+    background-color: #660000;
+    border-color: #660000;
+}
+.fc-header-toolbar .fc-button-primary:hover{
+    background-color: #E00000;
+    border-color: #E00000;
+}
+.fc-header-toolbar .fc-button-primary:disabled{
+    background-color: #FF8585;
+    border-color: #FF8585;
+
+}
 
