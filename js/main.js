@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Construir Calendario
   const calendarDOM = document.getElementById('calendar');
   const calendar = new FullCalendar.Calendar(calendarDOM, {
-    initialView: 'dayGridMonth',
+    initialView: 'listMonth',
     locale: 'es',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      right: 'listMonth,dayGridMonth,timeGridWeek,timeGridDay'
     },
     eventSources: ['data/events.data.php']
   });
