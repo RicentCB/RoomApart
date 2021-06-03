@@ -48,7 +48,47 @@ main{
     border-color: #FF8585;
 }
 .fc .fc-daygrid-day.fc-day-today{
+    background-color: #ff0095;
     background-color: rgba(255, 214, 214, 0.25);
 
 }
 
+/* Modal de Agregar Evento */
+.input-container > input[type="text"]:focus,
+.input-container > input[type="text"]:focus-visible,
+.input-container > select:focus{
+    border-color: #8F0000;
+
+}
+
+#input-color{
+    font-size: .75em;
+    text-align: center;
+}
+#input-color .row-content{
+    padding: 10px 0;
+    margin: 0 8px;
+    border-radius: 5px;
+    border:rgb(151, 151, 151) 2px solid;
+}
+#input-color .row-content:hover{
+    background-color: #d85353;
+    border-color: #d85353;
+    color: #fff;
+}
+#input-color .row-content:first-child{
+    margin-left: 0;
+}
+#input-color .row-content:last-child{
+    margin-right: 0;
+}
+#input-color .row-content.selected{
+    border-color: #8F0000;
+
+}
+#input-color .color-content{
+    width: 25px;
+    height: 25px;
+    background-color: cadetblue;
+    margin: 0 auto 15px auto;
+}
