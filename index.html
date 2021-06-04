@@ -27,8 +27,8 @@
         <div id="calendar"></div>
     </main>
 
-    <section class="modal" id="modal-addEvent">
-        <div class="modal-content rotation-3d">
+    <section class="modal visible" id="modal-addEvent">
+        <div class="modal-content rotation-3d visible">
             <a href="#" class="close-modal"> </a>
             <h2>Agregar Evento</h2>
             <form action="#" class="form-container">
@@ -39,16 +39,20 @@
                     <label for="in-title">Titulo:</label>
                     <input type="text" name="in-title" id="in-title" placeholder="E.g Presentación final">
                 </div>
-                <div class="input-container">
-                    <label for="in-room">Salon:</label>
-                    <select name="in-room" id="in-room">
-                        <!-- Inyeccion con JS /main.js -->
-                    </select>
+
+                <div class="row-container">
+                    <div class="input-container row-content">
+                        <label for="in-room">Salon:</label>
+                        <select name="in-room" id="in-room">
+                            <!-- Inyeccion con JS /main.js -->
+                        </select>
+                    </div>
+                    <div class="input-container row-content">
+                        <label for="in-subject">Unidad de Aprendizaje:</label>
+                        <input type="text" name="in-subject" id="in-subject" placeholder="E.g Ingles II">
+                    </div>
                 </div>
-                <div class="input-container">
-                    <label for="in-subject">Unidad de Aprendizaje:</label>
-                    <input type="text" name="in-subject" id="in-subject" placeholder="E.g Ingles II">
-                </div>
+                
                 <div class="input-container">
                     <label for="#">Color</label>
                     <div class="row-container" id="input-color">
