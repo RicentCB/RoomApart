@@ -30,7 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <option value="${option["id_room"]}">${option["nombre"]}</option>
         `),
         '<option value="0">Seleccione un salon</option>')
-    });
+  });
+
+  // PostRequest({}, 'data/events.data.php').then((ans)=>{
+  //   console.log(ans);
+  // });
       
   
   // Objeto para el envio de datos
