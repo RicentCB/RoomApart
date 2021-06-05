@@ -8,7 +8,7 @@
     foreach ($allEvents as $event) {
         $room = GenericController::ctrReadRooms("id_room", $event["id_room"]);
         array_push($arrOutEvents, array(
-            'title'=>$event["titulo"].', ',
+            'title'=>$room["nombre"].', '.$event["titulo"],
             'start'=>$event["fecha"].'T'.$event["hora_inicio"],
             'end'=>$event["fecha"].'T'.$event["hora_fin"],
             'backgroundColor'=>$event["color"],

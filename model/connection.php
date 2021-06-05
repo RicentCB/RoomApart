@@ -4,7 +4,7 @@
         static public function connect(){
 
             $serv = "localhost";
-            $db   = "roomapart";
+            $db   = "test";
             $user = "root";
             $pass = "";
     
