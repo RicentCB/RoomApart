@@ -31,10 +31,10 @@ Y modificar el archivo 'connection.php', en la carpeta model. Donde encontraras 
     }
 ```
 
-Modificaras las variables:
-    $serv => Direccion del servidor
-    $db => Nombre de la base de datos
-    $user => Usuario registrado en el manejador
-    $pass => la contraseña del manejador
+Modificaras las variables:  
+    $serv => Direccion del servidor  
+    $db => Nombre de la base de datos  
+    $user => Usuario registrado en el manejador  
+    $pass => la contraseña del manejador  
 
 Ya hay eventos precargados en la base de datos de ejemplo, por lo cual si la conexión es correcta deberias de verlos en el calendario en el mes de Junio 2021.
